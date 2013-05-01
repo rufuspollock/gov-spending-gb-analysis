@@ -1,2 +1,2 @@
 #!/bin/bash
-psql gbspend -f create.sql
+psql gbspend -f scripts/create.sql

@@ -38,6 +38,23 @@ Analyzing UK Government Spending from and for OpenSpending. See:
 
       psql gbspend -f scripts/create.sql
 
+Note: load of sample is ~12s (535k rows). Load of full dataset and sample ~2m35s (5.480m rows)
+
+### Running Some SQL
+
+We have various sql scripts in the scripts directory.
+
+As an example, the analysis script calculates various aggregate totals. You can run it by doing:
+
+    psql gbspend -f scripts/analysis.sql
+
+By default the scripts run on the sample table. If we want to change we can
+just pipe the script through find and replace (sed) before running it:
+
+    cat scripts/analysis.sql | sed "s/sample/latest/g" > psql gbspend
+
+Warning: running this prior to creating relevant indexes will be *slow*!
+
 ### Quick and Dirty Techniques
 
 #### Looking at specific rows
